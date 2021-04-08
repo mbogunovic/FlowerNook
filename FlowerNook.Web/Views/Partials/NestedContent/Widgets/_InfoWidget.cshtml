@@ -1,0 +1,11 @@
+﻿@inherits UmbracoViewPage<FlowerNook.Core.ViewModels.Partials.NestedContent.Widgets.InfoWidgetViewModel>
+
+@if (Model.HasValue() && Model.Items.HasValue())
+{
+	<div>
+		@foreach(var item in Model.Items)
+		{
+			Html.RenderPartial(item);
+		}
+	</div>
+}

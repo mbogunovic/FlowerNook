@@ -1,7 +1,10 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using FlowerNook.Core.Contexts;
 using FlowerNook.Core.Extensions;
 using FlowerNook.Core.ViewModels.Partials.Layout;
+using FlowerNook.Core.ViewModels.Partials.NestedContent.Widgets;
 using FlowerNook.Models.Generated;
 
 namespace FlowerNook.Core.ViewModels.Pages
@@ -13,6 +16,8 @@ namespace FlowerNook.Core.ViewModels.Pages
 			if (context == null) throw new ArgumentNullException(nameof(context));
 
 			MetaTagsLazy = new Lazy<MetaTagsViewModel>(() => new MetaTagsViewModel(context.CreateSeoContext(context.Page)));
+			WidgetsLazy = new Lazy<IEnumerable<IWidgetViewModel>>(() => context.CurrentPage.Widgets
+				.Select(x => x.AsViewModelWithNestedContentContext<IWidgetViewModel>(context)));
 			OpenGraphLazy = new Lazy<OpenGraphViewModel>(() => new OpenGraphViewModel(context, context.Page));
 			HeaderLazy = new Lazy<HeaderViewModel>(() => new HeaderViewModel(context.Home));
 			FooterLazy = new Lazy<FooterViewModel>(() => new FooterViewModel(context.Home));
@@ -33,6 +38,7 @@ namespace FlowerNook.Core.ViewModels.Pages
 		public string GoogleAnalyticsCode => GoogleAnalyticsCodeLazy.Value;
 
 		private Lazy<MetaTagsViewModel> MetaTagsLazy { get; }
+		public Lazy<IEnumerable<IWidgetViewModel>> WidgetsLazy { get; }
 		private Lazy<OpenGraphViewModel> OpenGraphLazy { get; }
 		private Lazy<HeaderViewModel> HeaderLazy { get; }
 		private Lazy<FooterViewModel> FooterLazy { get; }

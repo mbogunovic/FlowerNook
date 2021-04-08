@@ -1,0 +1,11 @@
+﻿@inherits UmbracoViewPage<FlowerNook.Core.ViewModels.Partials.NestedContent.Widgets.TextWidgetViewModel>
+
+@if (Model.HasValue() && Model.Text.HasValue())
+{
+	if (Model.DelimiterImage.HasValue() && Model.DelimiterImage.Url.HasValue())
+	{
+		<img src="@Model.DelimiterImage.Url" alt="@Model.DelimiterImage.AlternateText">
+    }
+
+	@Model.Text
+}

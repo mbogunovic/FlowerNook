@@ -1,0 +1,19 @@
+﻿@inherits UmbracoViewPage<FlowerNook.Core.ViewModels.Partials.NestedContent.Items.BannerItemViewModel>
+
+@if (Model.HasValue() && Model.Background.HasValue())
+{
+	<div style="background-image: url(@Model.Background.Url)"> @*TODO: ADD CROP SIZE*@
+		<div>
+			@if (Model.Title.HasValue())
+			{
+				<h2>@Model.Title</h2>
+			}
+			@if (Model.Link.HasValue() && Model.Link.Url.HasValue())
+			{
+				<a href="@Model.Link.Url" target="@Model.Link.Target">
+					<span>@Model.Link.Content</span>
+				</a>
+			}
+		</div>
+	</div>
+}

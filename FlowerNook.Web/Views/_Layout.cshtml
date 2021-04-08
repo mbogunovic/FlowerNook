@@ -23,6 +23,16 @@
 	Html.RenderAction<LayoutController>(c => nameof(c.Header), new { viewModel = Model.Header });
 }
 <div>
+	@{
+		if (Model.WidgetsLazy.Value.HasValue())
+		{
+			foreach(var widget in Model.WidgetsLazy.Value)
+			{
+				Html.RenderPartial(widget);
+			}
+		}
+
+	}
 	@RenderBody()
 </div>
 @{

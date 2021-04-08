@@ -7,5 +7,6 @@ namespace FlowerNook.Models.DocumentTypes
 	/// </summary>
 	public interface IDomainRoot : IPublishedContent
 	{
+		string SiteName { get; }
 	}
 }

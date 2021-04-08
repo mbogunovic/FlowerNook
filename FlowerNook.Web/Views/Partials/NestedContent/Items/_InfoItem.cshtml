@@ -1,0 +1,29 @@
+﻿@inherits UmbracoViewPage<FlowerNook.Core.ViewModels.Partials.NestedContent.Items.InfoItemViewModel>
+
+@if (Model.HasValue())
+{
+	<div>
+		@if (Model.Image.HasValue() && Model.Image.Url.HasValue())
+		{
+			<div>
+				<img src="@Model.Image.Url" alt="@Model.Image.AlternateText">
+			</div>
+		}
+		<div>
+			@if (Model.Title.HasValue())
+			{
+				<h2>@Model.Title</h2>
+			}
+			@if (Model.Description.HasValue())
+			{
+				<p>@Model.Description</p>
+			}
+			@if (Model.Link.HasValue() && Model.Link.Url.HasValue())
+			{
+				<a href="@Model.Link.Url" target="@Model.Link.Target">
+					<span>@Model.Link.Content</span>
+				</a>
+			}
+		</div>
+	</div>
+}

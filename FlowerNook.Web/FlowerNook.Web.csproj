@@ -441,6 +441,7 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Extensions\HtmlHelperExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -479,6 +480,11 @@
     <Content Include="Views\Partials\Grid\Bootstrap3.cshtml" />
     <Content Include="Views\Partials\Grid\Bootstrap3-Fluid.cshtml" />
     <Content Include="Views\Partials\BlockList\Default.cshtml" />
+    <Content Include="Views\Partials\NestedContent\Widgets\_BannerWidget.cshtml" />
+    <Content Include="Views\Partials\NestedContent\Items\_BannerItem.cshtml" />
+    <Content Include="Views\Partials\NestedContent\Widgets\_TextWidget.cshtml" />
+    <Content Include="Views\Partials\NestedContent\Items\_InfoItem.cshtml" />
+    <Content Include="Views\Partials\NestedContent\Widgets\_InfoWidget.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -495,7 +501,12 @@
       <Project>{5db13650-d2d7-4e7e-9fdf-1166067d6ccf}</Project>
       <Name>FlowerNook.Core</Name>
     </ProjectReference>
+    <ProjectReference Include="..\FlowerNook.Models\FlowerNook.Models.csproj">
+      <Project>{5F883FB4-7390-4A64-9F89-12597A61EDA2}</Project>
+      <Name>FlowerNook.Models</Name>
+    </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
