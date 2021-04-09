@@ -19,7 +19,7 @@ namespace FlowerNook.Core.ViewModels.Pages
 			WidgetsLazy = new Lazy<IEnumerable<IWidgetViewModel>>(() => context.CurrentPage.Widgets
 				.Select(x => x.AsViewModelWithNestedContentContext<IWidgetViewModel>(context)));
 			OpenGraphLazy = new Lazy<OpenGraphViewModel>(() => new OpenGraphViewModel(context, context.Page));
-			HeaderLazy = new Lazy<HeaderViewModel>(() => new HeaderViewModel(context.Home));
+			HeaderLazy = new Lazy<HeaderViewModel>(() => new HeaderViewModel(context));
 			FooterLazy = new Lazy<FooterViewModel>(() => new FooterViewModel(context.Home));
 			CookieScriptLazy = new Lazy<string>(() => context.Home.CookieScript);
 			GoogleTagManagerScriptCodeLazy = new Lazy<string>(() => context.Home.GoogleTagManagerScriptCode);

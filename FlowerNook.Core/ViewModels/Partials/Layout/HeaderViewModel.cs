@@ -3,20 +3,24 @@ using Umbraco.Web;
 using FlowerNook.Core.Extensions;
 using FlowerNook.Core.ViewModels.Shared;
 using FlowerNook.Models.Generated;
+using FlowerNook.Core.ViewModels.Navigation;
+using FlowerNook.Core.Contexts;
 
 namespace FlowerNook.Core.ViewModels.Partials.Layout
 {
 	public class HeaderViewModel
 	{
-		public HeaderViewModel(IHeader header)
+		public HeaderViewModel(IPageContext<IPage> context)
 		{
-			if (header == null) throw new ArgumentNullException(nameof(header));
+			if (context == null) throw new ArgumentNullException(nameof(context));
 
-			Logo = header.Logo.ToViewModel();
-			LogoUrl = header.AncestorOrSelf<Home>().Url;
+			Logo = context.Home.Logo.ToViewModel();
+			LogoUrl = context.Home.AncestorOrSelf<Home>().Url;
+			Navigation = new PrimaryNavigationViewModel(context);
 		}
 
 		public ImageViewModel Logo { get; }
 		public string LogoUrl { get; }
+		public PrimaryNavigationViewModel Navigation { get; }
 	}
 }

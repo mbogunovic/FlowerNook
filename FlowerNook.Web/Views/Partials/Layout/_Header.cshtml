@@ -1,1 +1,34 @@
-﻿
+﻿@using FlowerNook.Core.ViewModels.Navigation
+@inherits UmbracoViewPage<FlowerNook.Core.ViewModels.Partials.Layout.HeaderViewModel>
+
+<nav>
+	@if (Model.Logo.HasValue() && Model.Logo.Url.HasValue())
+	{
+		<a href="@Model.LogoUrl">
+			<img src="@Model.Logo.Url" alt="@Model.Logo.AlternateText" />
+		</a>
+	}
+
+	@if (Model.Navigation.HasValue() && Model.Navigation.NavigationNodes.HasValue())
+	{
+		<ul>
+			@foreach (var navNode in Model.Navigation.NavigationNodes)
+			{
+				RenderNavigationNode(navNode);
+			}
+		</ul>
+	}
+
+</nav>
+
+@helper RenderNavigationNode(PrimaryNavigationNodeViewModel navNode)
+{
+	<li @(navNode.IsActive ? "class=active" : string.Empty)><a href="@navNode.Link.Url">@navNode.Link.Content</a></li>
+	if (navNode.SubNavigation.Any())
+	{
+		foreach (var node in navNode.SubNavigation)
+		{
+			RenderNavigationNode(navNode);
+		}
+	}
+}
